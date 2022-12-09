@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="Mobilebook.Mvvm.View.CallsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Mobilebook.Mvvm.View"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:col="clr-namespace:System.Collections;assembly=netstandard"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <TextBlock Text="Звонки"
+                   Foreground="White"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="0,0,0,20"/>
+
+        <DataGrid x:Name="zvonkigrid"
+                  Margin="0 40 0 60"
+                  Style="{StaticResource DataGridTheme}"
+                  CanUserResizeColumns="False"
+                  CanUserResizeRows="False"
+                  RowBackground="Transparent"
+                  AutoGenerateColumns="False">
+
+
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Foreground="White" Header="#" Binding="{Binding IdCall}" IsReadOnly="True" CanUserResize="False" Width="auto" CellStyle="{StaticResource datarow}"/>
+                <DataGridTextColumn Foreground="White" Header="Номер абонента" Binding="{Binding PhoneAbonent}" CanUserResize="False" Width="auto" CellStyle="{StaticResource datarow}"/>
+                <DataGridTextColumn Foreground="White" Header="Время" Binding="{Binding Date}" CanUserResize="False" Width="auto" CellStyle="{StaticResource datarow}"/>
+                <DataGridTextColumn Foreground="White" Header="Прод/мин" Binding="{Binding Duration}" CanUserResize="False" Width="auto" CellStyle="{StaticResource datarow}"/>
+                <DataGridTextColumn Foreground="White" Header="Вх/Ис" Binding="{Binding OutInt}" CanUserResize="False" Width="auto" CellStyle="{StaticResource datarow}"/>
+                <DataGridTextColumn Foreground="White" Header="Стоимость" Binding="{Binding Cost}" CanUserResize="False" Width="60" CellStyle="{StaticResource datarow}"/>
+
+              
+
+                <DataGridTemplateColumn Header="Операции" IsReadOnly="True" Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource gridEditButton}" Click="Update_Click" >
+                                    <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
+                                </Button>
+                                <Button Style="{StaticResource gridRemoveButton}" Click="Remove_Click">
+                                    <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+         
+        <Border Grid.Row="6"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                BorderBrush="#22202f"
+                BorderThickness="1"
+                CornerRadius="5"
+                Padding="5"
+                Background="#22202f"
+                Margin="0,10,10,10">
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource paggingButtonTheme}" Content="1"/>
+                <Button Style="{StaticResource paggingButtonTheme}" Content="2"/>
+            </StackPanel>
+            
+        </Border>
+        
+        
+
+        <Button x:Name="buttonAdd"
+                Margin="0,10,10,10"
+                Width="120" Height="30"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Padding="5"
+                Style="{StaticResource gridButtonAdd}"
+                Click="buttonAdd_Click">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Добавить звонок"/>
+            </StackPanel>
+        </Button>
+
+    </Grid>
+    
+</UserControl>

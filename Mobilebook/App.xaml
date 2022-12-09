@@ -1,0 +1,29 @@
+﻿<Application x:Class="Mobilebook.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:local="clr-namespace:Mobilebook"
+             xmlns:viewModel="clr-namespace:Mobilebook.Mvvm.ViewModel"
+             xmlns:view="clr-namespace:Mobilebook.Mvvm.View" 
+             StartupUri="Auth.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="theme/MenuButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:CallsViewModel}">
+                <view:CallsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:KabinetViewModel}">
+                <view:KabinetView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:StatsViewModel}">
+                <view:Stats/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
